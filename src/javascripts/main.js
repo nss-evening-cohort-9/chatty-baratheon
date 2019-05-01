@@ -1,5 +1,6 @@
 import '../styles/main.scss';
 import 'bootstrap';
+
 import chatBox from './components/chatBox';
 
 
