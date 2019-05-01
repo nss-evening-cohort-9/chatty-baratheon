@@ -1,7 +1,7 @@
-let global = [];
+let messages = [];
 
 const clearMessages = () => {
-  global = [];
+  messages = [];
   chatBoxBuilder();
 };
 
