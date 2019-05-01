@@ -1,4 +1,11 @@
 import '../styles/main.scss';
 import 'bootstrap';
 
-console.error('yo yo');
+import chatBox from './components/chatBox';
+
+
+const init = () => {
+  chatBox.initializeMessages();
+};
+
+init();
