@@ -3,30 +3,35 @@
 			"messageId": "message1",
 			"userId": "chatBot",
 			"name": "Bobby Baratheon",
+			"timeStamp": "",
 			"messageContent": "Welcome to Chatty-B"
 		},
 		{
 			"messageId": "message2",
 			"userId": "chatBot",
 			"name": "Bobby Baratheon",
+			"timeStamp": "",
 			"messageContent": "To talk with others, type your messages at the top of the page and click enter"
 		},
 		{
 			"messageId": "message3",
 			"userId": "chatBot",
 			"name": "Bobby Baratheon",
+			"timeStamp": "",
 			"messageContent": "Text too small? Check the Large Text button above to make the font size bigger"
 		},
 		{
 			"messageId": "message4",
 			"userId": "chatBot",
 			"name": "Bobby Baratheon",
+			"timeStamp": "",
 			"messageContent": "Theme too bright for your sensitive eyes? Click the Dark Theme button above to dim your display"
 		},
 		{
 			"messageId": "message5",
 			"userId": "chatBot",
 			"name": "Bobby Baratheon",
+			"timeStamp": "",
 			"messageContent": "To clear your chat history, click the Clear Chat button at the top right of the screen"
 		}
 	]
