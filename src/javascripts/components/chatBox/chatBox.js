@@ -37,7 +37,6 @@ const chatBoxBuilder = () => {
 };
 
 const clearMessages = () => {
-  console.error('you tried to clear messages');
   messages = [];
   chatBoxBuilder();
 };
@@ -57,7 +56,6 @@ const messageBuilder = (messageToPrint) => {
 
 const newMessageEvent = (e) => {
   e.preventDefault();
-  console.error('event', e);
   if (e.keyCode === 13) {
     const messageContent = e.target.value;
     messageBuilder(messageContent);
