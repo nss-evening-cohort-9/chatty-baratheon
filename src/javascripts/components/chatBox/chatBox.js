@@ -55,6 +55,7 @@ const newMessageEvent = (e) => {
   if (e.keyCode === 13) {
     const messageContent = e.target.value;
     messageBuilder(messageContent);
+    e.target.value = [];
   }
 };
 
