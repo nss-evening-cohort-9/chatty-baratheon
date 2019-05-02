@@ -36,6 +36,11 @@ const chatBoxBuilder = () => {
   util.printToDom('chatBox', domString);
 };
 
+const clearMessages = () => {
+  messages = [];
+  chatBoxBuilder();
+};
+
 const messageBuilder = (messageToPrint) => {
   const newMessage = {
     messageId: `message${messageIterator}`,
@@ -51,7 +56,6 @@ const messageBuilder = (messageToPrint) => {
 
 const newMessageEvent = (e) => {
   e.preventDefault();
-  console.error('event', e);
   if (e.keyCode === 13) {
     const messageContent = e.target.value;
     messageBuilder(messageContent);
@@ -69,4 +73,4 @@ const initializeMessages = () => {
     .catch(err => console.error(err));
 };
 
-export default { initializeMessages, newMessageEvent };
+export default { initializeMessages, newMessageEvent, clearMessages };
