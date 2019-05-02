@@ -8,11 +8,12 @@
 </head>
 <body>
   <nav class="navbar sticky-top navbar-light bg-light">
-    <form class="d-flex flex-row justify-content-between col-12">
+    <div class="d-flex flex-row justify-content-between col-12">
       <img src="https://f4.bcbits.com/img/0009711024_10.jpg" width="50" height="50" class="flex-row align-top col-1" id="navImg">
-      <input class="form-control mr-sm-2 col-5" id="chatInput" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2 col-5" id="chatInput" type="text" placeholder="Type in here to chat!" aria-label="text">
       <button class="btn btn-outline-success my-2 my-sm-0 col-1" id="clearChat" type="button">Clear Chat</button>
-    </form>
+    </div>
   </nav>
+  <div id="chatBox" class="container mt-3 d-flex flex-column justify-content-end chatbox"></div>
 </body>
 </html>
