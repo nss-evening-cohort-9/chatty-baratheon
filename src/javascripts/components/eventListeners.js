@@ -7,7 +7,7 @@ window.$ = $;
 
 const eventListeners = () => {
   $('#chatInput').keyup(chatBox.newMessageEvent);
-  $('#clearChat').on('click', chatBox.clearMessages);
+  $('#clearChat').click(chatBox.clearMessages);
 };
 
 export default { eventListeners };

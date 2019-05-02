@@ -36,6 +36,12 @@ const chatBoxBuilder = () => {
   util.printToDom('chatBox', domString);
 };
 
+const clearMessages = () => {
+  console.error('you tried to clear messages');
+  messages = [];
+  chatBoxBuilder();
+};
+
 const messageBuilder = (messageToPrint) => {
   const newMessage = {
     messageId: `message${messageIterator}`,
@@ -69,4 +75,4 @@ const initializeMessages = () => {
     .catch(err => console.error(err));
 };
 
-export default { initializeMessages, newMessageEvent };
+export default { initializeMessages, newMessageEvent, clearMessages };
