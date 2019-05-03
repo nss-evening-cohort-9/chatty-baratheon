@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Baratheon</title>
 </head>
-<body>
+<body id="content">
   <nav class="navbar sticky-top navbar-light bg-light">
     <div class="d-flex flex-row justify-content-between col-12">
       <img src="https://f4.bcbits.com/img/0009711024_10.jpg" width="50" height="50" class="flex-row align-top col-1" id="navImg">
@@ -14,6 +14,10 @@
       <button class="btn btn-outline-success my-2 my-sm-0 col-1" id="clearChat" type="button">Clear Chat</button>
     </div>
   </nav>
+  <div class="sizeControl container d-flex justify-content-center col-12">
+    <input type="checkbox" id="increaseSize" style="font-weight:bold">TextSizeIncrease</input>
+    <input type="checkbox" id="darkMode" name="dark_light" onclick="toggleDarkLight" title="Toggle dark/light mode">🌛Dark Mode</input>
+  </div>
   <div id="chatBox" class="container mt-3 d-flex flex-column justify-content-end chatbox overflow-auto"></div>
 </body>
 </html>
