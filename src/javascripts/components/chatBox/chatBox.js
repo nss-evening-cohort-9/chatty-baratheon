@@ -8,9 +8,20 @@ import './chatBox.scss';
 let messages = [];
 let messageIterator = 6;
 
+const getLimitedMessageLength = () => {
+  const messagesToPrint = [...messages];
+  if (messagesToPrint.length > 20) {
+    return messagesToPrint.splice(-20, 20);
+  }
+  return messagesToPrint;
+};
+
 const chatBoxBuilder = () => {
+  const messagesToPrint = getLimitedMessageLength();
+  console.error(messages.length);
+  console.error(messagesToPrint.length);
   let domString = [];
-  messages.forEach((message) => {
+  messagesToPrint.forEach((message) => {
     if (message.userId === 'chatBot') {
       domString += `<div id="${message.messageId}" class="d-flex flex-column mr-2">`;
       domString += `<p class="messageDate">${message.timeStamp}</p>`;
