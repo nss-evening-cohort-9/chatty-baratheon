@@ -18,8 +18,6 @@ const getLimitedMessageLength = () => {
 
 const chatBoxBuilder = () => {
   const messagesToPrint = getLimitedMessageLength();
-  console.error(messages.length);
-  console.error(messagesToPrint.length);
   let domString = [];
   messagesToPrint.forEach((message) => {
     if (message.userId === 'chatBot') {
