@@ -1,13 +1,13 @@
 import $ from 'jquery';
 
 import chatBox from './chatBox/chatBox';
-
-window.jQuery = $;
-window.$ = $;
+// import util from '../helpers/util';
 
 const eventListeners = () => {
   $('#chatInput').keyup(chatBox.newMessageEvent);
   $('#clearChat').click(chatBox.clearMessages);
+  $('#chatBox').click(chatBox.editMessage);
+  $('#chatBox').click(chatBox.saveMessage);
   $('#increaseSize').click(function increaseSize() {
     let size = parseInt($('#chatBox').css('font-size'), 10);
     if ($(this).is(':checked')) {

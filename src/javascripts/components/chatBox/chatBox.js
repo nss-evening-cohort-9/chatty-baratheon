@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import moment from 'moment';
 
 import messagesData from '../../helpers/data/messagesData';
@@ -21,23 +22,23 @@ const chatBoxBuilder = () => {
   let domString = [];
   messagesToPrint.forEach((message) => {
     if (message.userId === 'chatBot') {
-      domString += `<div id="${message.messageId}" class="d-flex flex-column mr-2">`;
+      domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column mr-2">`;
       domString += `<p class="messageDate">${message.timeStamp}</p>`;
       domString += '<div class="d-flex flex-row">';
-      domString += '<button type="button" class="close mx-2" data-dismiss="alert" aria-label="DeleteMessage">';
-      domString += '<span aria-hidden="true">&times;</span>';
-      domString += '</button>';
-      domString += `<p class="message messageBubbleIn">${message.messageContent}</p>`;
+      domString += '<button class="deleteBtn fas fa-times mx-1" data-dismiss="alert" type="button" aria-label="Delete Message"></button>';
+      domString += '<button class="editBtn fas fa-pencil-alt mx-1 " type="button" aria-label="Edit Message"></button>';
+      domString += '<button class="saveBtn fas fa-save mx-1" style="display: none;" aria-label="Save Message"></button>';
+      domString += `<p class="messageContent messageBubbleIn">${message.messageContent}</p>`;
       domString += '</div>';
       domString += '</div>';
     } else {
-      domString += `<div id="${message.messageId}" class="d-flex flex-column align-items-end text-right ml-2">`;
+      domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-end text-right ml-2">`;
       domString += `<p class="messageDate">${message.timeStamp}</p>`;
       domString += '<div class="d-flex flex-row">';
-      domString += `<p class="message messageBubbleOut">${message.messageContent}</p>`;
-      domString += '<button type="button" class="close mx-2" data-dismiss="alert" aria-label="Delete Message">';
-      domString += '<span aria-hidden="true">&times;</span>';
-      domString += '</button>';
+      domString += `<p class="messageContent messageBubbleOut">${message.messageContent}</p>`;
+      domString += '<button class="saveBtn fas fa-save mx-1" style="display: none;" aria-label="Save Message"></button>';
+      domString += '<button class="editBtn fas fa-pencil-alt mx-1" aria-label="Edit Message"></button>';
+      domString += '<button class="deleteBtn fas fa-times mx-1" data-dismiss="alert" aria-label="Delete Message"></button>';
       domString += '</div>';
       domString += '</div>';
     }
@@ -72,6 +73,31 @@ const newMessageEvent = (e) => {
   }
 };
 
+const editMessage = (e) => {
+  e.preventDefault();
+  if ($(e.target).hasClass('editBtn')) {
+    util.handleEditBtn(e);
+  }
+};
+
+const updateMessage = (messageId, messageContents) => {
+  $.each(messages, (i) => {
+    if (messageId === messages[i].messageId) {
+      messages[i].messageContent = messageContents;
+    }
+  });
+};
+
+const saveMessage = (e) => {
+  e.preventDefault();
+  const messageId = e.target.parentElement.parentElement.id;
+  const messageContents = $(e.target.parentElement).closest('div').find('.messageContent').html();
+  if ($(e.target).hasClass('saveBtn')) {
+    util.handleSaveBtn(e);
+    updateMessage(messageId, messageContents);
+  }
+};
+
 const initializeMessages = () => {
   messagesData.getMessagesData()
     .then((resp) => {
@@ -82,4 +108,6 @@ const initializeMessages = () => {
     .catch(err => console.error(err));
 };
 
-export default { initializeMessages, newMessageEvent, clearMessages };
+export default {
+  initializeMessages, newMessageEvent, clearMessages, editMessage, saveMessage,
+};

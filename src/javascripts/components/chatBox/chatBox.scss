@@ -1,3 +1,5 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 .chatbox {
   width: 50vw;
   height: 85vh;
@@ -7,7 +9,7 @@
   padding: 1rem .5rem;
 };
 
-.message {
+.messageContent {
   margin: 1% 0;
 };
 
@@ -28,3 +30,47 @@
   border-radius: 20px;
   padding: .2rem .5rem;
 };
+
+.deleteBtn:not(:disabled):not(.disabled):hover,
+.deleteBtn:not(:disabled):not(.disabled):focus,
+.editBtn:not(:disabled):not(.disabled):hover,
+.editBtn:not(:disabled):not(.disabled):focus,
+.saveBtn:not(:disabled):not(.disabled):hover,
+.saveBtn:not(:disabled):not(.disabled):focus {
+  opacity: .75;
+}
+
+button.editBtn,
+button.saveBtn,
+button.deleteBtn {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+  justify-content: center;
+  align-items: center;
+}
+
+deleteBtn,
+editBtn,
+saveBtn {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px o #fff;
+}
+
+.editBtn .fa-pencil-alt,
+.deleteBtn .fa-times {
+  color: #000;
+  opacity: .5;
+} 
+
+.editBtn .fa-pencil-alt:hover,
+.deleteBtn .fa-times:hover {
+  color: #000;
+  text-decoration: none;
+  opacity: 1;
+  align-items: center;
+}
