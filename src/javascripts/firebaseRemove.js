@@ -1,9 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-const removeMessage = (e) => {
-  const messageTarget = e.target.id;
-  console.error(messageTarget);
+const removeMessage = (id) => {
+  const messageTarget = id;
   const database = firebase.database();
   database.ref(`messages/${messageTarget}`).remove();
 };
