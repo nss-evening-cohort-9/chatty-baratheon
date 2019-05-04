@@ -84,12 +84,6 @@ const deleteMessage = (e) => {
   e.preventDefault();
   const messageId = $(e.target).closest('.messageContainer').attr('id');
   removeData.removeMessage(messageId);
-  // messages.forEach((message, index) => {
-  //   if (message.messageId === messageId) {
-  //     messages.splice(index, 1);
-  //   }
-  // });
-  // chatBoxBuilder();
 };
 
 export default {
