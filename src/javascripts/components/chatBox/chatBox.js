@@ -2,6 +2,7 @@ import moment from 'moment';
 
 import util from '../../helpers/util';
 import putData from '../../firebasePut';
+import removeData from '../../firebaseRemove';
 
 import './chatBox.scss';
 
