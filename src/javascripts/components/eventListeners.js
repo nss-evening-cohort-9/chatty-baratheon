@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import chatBox from './chatBox/chatBox';
 
 const eventListeners = () => {
