@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import messagesData from '../../helpers/data/messagesData';
+// import messagesData from '../../helpers/data/messagesData';
 import util from '../../helpers/util';
 
 import './chatBox.scss';
@@ -72,14 +72,9 @@ const newMessageEvent = (e) => {
   }
 };
 
-const initializeMessages = () => {
-  messagesData.getMessagesData()
-    .then((resp) => {
-      const messageResults = resp.data.messages;
-      messages = messageResults;
-      chatBoxBuilder();
-    })
-    .catch(err => console.error(err));
+const sendData = (array) => {
+  messages = [...array];
+  chatBoxBuilder();
 };
 
-export default { initializeMessages, newMessageEvent, clearMessages };
+export default { sendData, newMessageEvent, clearMessages };
