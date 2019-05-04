@@ -1,7 +1,7 @@
 import moment from 'moment';
 
-// import messagesData from '../../helpers/data/messagesData';
 import util from '../../helpers/util';
+import putData from '../../firebasePut';
 
 import './chatBox.scss';
 
@@ -58,9 +58,8 @@ const messageBuilder = (messageToPrint) => {
     timeStamp: moment().format('MMMM D, YYYY h:mm A'),
     messageContent: String(messageToPrint),
   };
-  messages.push(newMessage);
+  putData.putData(newMessage);
   messageIterator += 1;
-  chatBoxBuilder();
 };
 
 const newMessageEvent = (e) => {
