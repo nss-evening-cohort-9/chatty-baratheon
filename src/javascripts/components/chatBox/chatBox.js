@@ -16,6 +16,13 @@ const getLimitedMessageLength = () => {
   return messagesToPrint;
 };
 
+const scrollPosition = () => {
+  const container = $('#chatboxContainer')[0];
+  const containerHeight = container.clientHeight;
+  const contentHeight = container.scrollHeight;
+  container.scrollTop = contentHeight - containerHeight;
+};
+
 const chatBoxBuilder = () => {
   const messagesToPrint = getLimitedMessageLength();
   let domString = [];
@@ -43,6 +50,7 @@ const chatBoxBuilder = () => {
     }
   });
   util.printToDom('chatBox', domString);
+  scrollPosition();
 };
 
 const clearMessages = () => {
@@ -92,6 +100,7 @@ const deleteMessage = (e) => {
   });
   chatBoxBuilder();
 };
+
 
 export default {
   initializeMessages, newMessageEvent, clearMessages, deleteMessage,
