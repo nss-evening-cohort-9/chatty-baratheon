@@ -75,12 +75,10 @@ const newMessageEvent = (e) => {
 
 const editMessage = (e) => {
   e.preventDefault();
-  if ($(e.target).hasClass('editBtn')) {
-    util.handleEditBtn(e);
-  }
+  util.handleEditBtn(e);
 };
 
-const updateMessage = (messageId, messageContents) => {
+const updateMessageArray = (messageId, messageContents) => {
   $.each(messages, (i) => {
     if (messageId === messages[i].messageId) {
       messages[i].messageContent = messageContents;
@@ -91,11 +89,9 @@ const updateMessage = (messageId, messageContents) => {
 const saveMessage = (e) => {
   e.preventDefault();
   const messageId = e.target.parentElement.parentElement.id;
-  const messageContents = $(e.target.parentElement).closest('div').find('.messageContent').html();
-  if ($(e.target).hasClass('saveBtn')) {
-    util.handleSaveBtn(e);
-    updateMessage(messageId, messageContents);
-  }
+  const messageContents = $(e.target).closest('.messageContainer').find('.messageContent').html();
+  util.handleSaveBtn(e);
+  updateMessageArray(messageId, messageContents);
 };
 
 const initializeMessages = () => {
