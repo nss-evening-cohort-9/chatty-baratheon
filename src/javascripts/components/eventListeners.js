@@ -8,6 +8,7 @@ window.$ = $;
 const eventListeners = () => {
   $('#chatInput').keyup(chatBox.newMessageEvent);
   $('#clearChat').click(chatBox.clearMessages);
+  $('#chatBox').on('click', '.deleteBtn', chatBox.deleteMessage);
   $('#increaseSize').click(function increaseSize() {
     let size = parseInt($('#chatBox').css('font-size'), 10);
     if ($(this).is(':checked')) {
