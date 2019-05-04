@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import moment from 'moment';
-
 import messagesData from '../../helpers/data/messagesData';
 import util from '../../helpers/util';
 
@@ -104,6 +103,17 @@ const initializeMessages = () => {
     .catch(err => console.error(err));
 };
 
+const deleteMessage = (e) => {
+  e.preventDefault();
+  const messageId = $(e.target).closest('.messageContainer').attr('id');
+  messages.forEach((message, index) => {
+    if (message.messageId === messageId) {
+      messages.splice(index, 1);
+    }
+  });
+  chatBoxBuilder();
+};
+
 export default {
-  initializeMessages, newMessageEvent, clearMessages, editMessage, saveMessage,
+  initializeMessages, newMessageEvent, clearMessages, editMessage, saveMessage, deleteMessage,
 };
