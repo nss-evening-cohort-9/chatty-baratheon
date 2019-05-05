@@ -6,7 +6,7 @@ const printToDom = (divId, textToPrint) => {
 };
 
 const handleEditBtn = (e) => {
-  const messageContainer = $(e.target.parentElement).closest('div').find('.messageContent');
+  const messageContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const saveBtn = $(e.target.parentElement).closest('div').find('.saveBtn');
   const editBtn = $(e.target.parentElement).closest('div').find('.editBtn');
   $(messageContainer).addClass('editable');
@@ -16,7 +16,7 @@ const handleEditBtn = (e) => {
 };
 
 const handleSaveBtn = (e) => {
-  const messageContainer = $(e.target.parentElement).closest('div').find('.messageContent');
+  const messageContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const saveBtn = $(e.target.parentElement).closest('div').find('.saveBtn');
   const editBtn = $(e.target.parentElement).closest('div').find('.editBtn');
   $(messageContainer).removeClass('editable');

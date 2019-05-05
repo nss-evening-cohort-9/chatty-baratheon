@@ -16,33 +16,45 @@ const getLimitedMessageLength = () => {
   return messagesToPrint;
 };
 
+const scrollPosition = () => {
+  const container = $('#chatboxContainer')[0];
+  const containerHeight = container.clientHeight;
+  const contentHeight = container.scrollHeight;
+  container.scrollTop = contentHeight - containerHeight;
+};
+
 const chatBoxBuilder = () => {
   const messagesToPrint = getLimitedMessageLength();
   let domString = [];
   messagesToPrint.forEach((message) => {
     if (message.userId === 'chatBot') {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column mr-2">`;
-      domString += `<p class="messageDate">${message.timeStamp}</p>`;
+      // domString += `<p class="messageDate">${message.timeStamp}</p>`;
       domString += '<div class="d-flex flex-row">';
-      domString += '<button class="deleteBtn fas fa-times mx-1" data-dismiss="alert" type="button" aria-label="Delete Message"></button>';
-      domString += '<button class="editBtn fas fa-pencil-alt mx-1 " type="button" aria-label="Edit Message"></button>';
-      domString += '<button class="saveBtn fas fa-save mx-1" style="display: none;" aria-label="Save Message"></button>';
-      domString += `<p class="messageContent messageBubbleIn">${message.messageContent}</p>`;
+      domString += '<div id="messageBtns" class="d-flex flex-row">';
+      domString += '<button class="deleteBtn fas fa-times" data-dismiss="alert" type="button" aria-label="Delete Message"></button>';
+      domString += '<button class="editBtn fas fa-pencil-alt" type="button" aria-label="Edit Message"></button>';
+      domString += '<button class="saveBtn fas fa-save" style="display: none;" aria-label="Save Message"></button>';
+      domString += '</div>';
+      domString += `<p class="messageContent messageBubbleIn msg-cont-left">${message.messageContent}</p>`;
       domString += '</div>';
       domString += '</div>';
     } else {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-end text-right ml-2">`;
       domString += `<p class="messageDate">${message.timeStamp}</p>`;
       domString += '<div class="d-flex flex-row">';
-      domString += `<p class="messageContent messageBubbleOut">${message.messageContent}</p>`;
-      domString += '<button class="saveBtn fas fa-save mx-1" style="display: none;" aria-label="Save Message"></button>';
-      domString += '<button class="editBtn fas fa-pencil-alt mx-1" aria-label="Edit Message"></button>';
-      domString += '<button class="deleteBtn fas fa-times mx-1" data-dismiss="alert" aria-label="Delete Message"></button>';
+      domString += `<p class="messageContent messageBubbleOut msg-cont-right">${message.messageContent}</p>`;
+      domString += '<div id="messageBtns" class="d-flex flex-row">';
+      domString += '<button class="saveBtn fas fa-save" style="display: none;" aria-label="Save Message"></button>';
+      domString += '<button class="editBtn fas fa-pencil-alt" aria-label="Edit Message"></button>';
+      domString += '<button class="deleteBtn fas fa-times" data-dismiss="alert" aria-label="Delete Message"></button>';
+      domString += '</div>';
       domString += '</div>';
       domString += '</div>';
     }
   });
   util.printToDom('chatBox', domString);
+  scrollPosition();
 };
 
 const clearMessages = () => {
@@ -81,16 +93,18 @@ const updateMessageArray = (messageId, messageContents) => {
   $.each(messages, (i) => {
     if (messageId === messages[i].messageId) {
       messages[i].messageContent = messageContents;
+      messages[i].timeStamp = moment().format('MMMM D, YYYY h:mm A');
     }
   });
+  chatBoxBuilder();
 };
 
 const saveMessage = (e) => {
   e.preventDefault();
-  const messageId = e.target.parentElement.parentElement.id;
+  const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContents = $(e.target).closest('.messageContainer').find('.messageContent').html();
-  util.handleSaveBtn(e);
   updateMessageArray(messageId, messageContents);
+  util.handleSaveBtn(e);
 };
 
 const initializeMessages = () => {
