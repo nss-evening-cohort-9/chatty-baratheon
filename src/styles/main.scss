@@ -1,12 +1,31 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: rgb(130, 130, 199);
+  padding: 0;
+  margin: 0;
+  background-color: black;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.1) 100%), url(../assets/baratheon-bg.jpg);
+  // background: url(../assets/baratheon-bg.jpg);
+  background-position: left;
+  background-size: auto;
 }
+
 #increaseSize {
 	font-size: 2rem;
 }
+
 .darkMode {
   background-color: black;
   color: white;
+}
+
+nav {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+  max-height: 100px;
+}
+
+#navImg {
+  width: 100%;
+  height: auto;
 }

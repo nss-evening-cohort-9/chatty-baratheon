@@ -8,8 +8,8 @@ const eventListeners = () => {
   $('#chatBox').on('click', '.editBtn', chatBox.editMessage);
   $('#chatBox').on('click', '.saveBtn', chatBox.saveMessage);
   $('#chatBox').on('click', '.deleteBtn', chatBox.deleteMessage);
-  $('#chatBox').on('mouseenter', '.messageContainer', effects.messageMouseenter);
-  $('#chatBox').on('mouseleave', '.messageContainer', effects.messageMouseleave);
+  $('#chatBox').on('mouseenter', '.messageRow', effects.messageMouseenter);
+  $('#chatBox').on('mouseleave', '.messageRow', effects.messageMouseleave);
   $('#toggleDark').click(() => {
     $('#content').toggleClass('darkMode');
   });

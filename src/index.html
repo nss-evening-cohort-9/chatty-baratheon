@@ -4,21 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
   <title>Baratheon</title>
 </head>
 <body id="content">
-  <nav class="navbar sticky-top navbar-light bg-light">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top navbar-light py-3">
     <div class="d-flex flex-row justify-content-between align-items-center col-12">
-      <img src="https://f4.bcbits.com/img/0009711024_10.jpg" width="50" height="50" class="flex-row align-top col-2" id="navImg">
-      <input class="form-control mr-sm-2 col-5" id="chatInput" type="text" placeholder="Type in here to chat!" aria-label="text">
-      <button class="btn btn-outline-success my-sm-0 col-2" id="clearChat" type="button">Clear Chat</button>
+      <div class="nav-brand m-0 p-0 d-flex align-items-center flex-row col-2">
+        <img src="./assets/baratheon-icon.png" class="col-8" id="navImg"> 
+        <h4 class="col-6 p-0 m-0">Flings Landing</h4>
+      </div>
+      <input class="form-control col-5 shadow-lg" id="chatInput" type="text" placeholder="Type in here to chat!" aria-label="Chat Input Box">
+      <button class="btn btn-dark col-2 shadow-lg" id="clearChat" type="button">Clear Chat</button>
     </div>
   </nav>
+  <!-- Page editing controls -->
   <div class="sizeControl container d-flex justify-content-center align-items-center col-12">
     <input type="checkbox" id="increaseSize" style="font-weight:bold">TextSizeIncrease</input>
     <input type="checkbox" id="toggleDark" name="dark_light" onclick="toggleDarkLight" title="Toggle dark/light mode">🌛Dark Mode</input>
   </div>
-  <div id="overflowDiv" class="mx-auto">
+  <!-- Chatbox section -->
+  <div id="overflowDiv" class="mx-auto shadow-lg">
     <div id="chatboxContainer" class="mx-auto">
       <div id="chatBox" class="container d-flex flex-column justify-content-end chatbox"></div>
     </div>
