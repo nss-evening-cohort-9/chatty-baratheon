@@ -10,6 +10,9 @@ const eventListeners = () => {
   $('#chatBox').on('click', '.deleteBtn', chatBox.deleteMessage);
   $('#chatBox').on('mouseenter', '.messageContainer', effects.messageMouseenter);
   $('#chatBox').on('mouseleave', '.messageContainer', effects.messageMouseleave);
+  $('#toggleDark').click(() => {
+    $('#content').toggleClass('darkMode');
+  });
   $('#increaseSize').click(function increaseSize() {
     let size = parseInt($('#chatBox').css('font-size'), 10);
     if ($(this).is(':checked')) {
@@ -23,11 +26,5 @@ const eventListeners = () => {
     $('#chatBox').css('font-size', size);
   });
 };
-
-// const toggleDarkLight () => {
-//   let body = document.getElementById("content");
-//   let currentClass = body.className;
-//   body.className = currentClass == "light-mode";
-// };
 
 export default { eventListeners };
