@@ -89,6 +89,7 @@ const editMessage = (e) => {
   util.handleEditBtn(e);
 };
 
+
 const updateMessageArray = (messageId, messageContents) => {
   $.each(messages, (i) => {
     if (messageId === messages[i].messageId) {
@@ -99,10 +100,19 @@ const updateMessageArray = (messageId, messageContents) => {
   chatBoxBuilder();
 };
 
+const getText = (element) => {
+  const firstTag = element[0].firstChild.nodeName;
+  const keyTag = new RegExp(firstTag === '#text' ? '<br' : `</${firstTag}`, 'i');
+  const tmp = document.createElement('p');
+  tmp.innerHTML = element[0].innerHTML.replace(/<[^>]+>/g, m => (keyTag.test(m) ? '{ß®}' : '')).replace(/{ß®}$/, '');
+  return tmp.innerText.replace(/{ß®}/g, '\n');
+};
+
 const saveMessage = (e) => {
   e.preventDefault();
   const messageId = $(e.target).closest('.messageContainer').attr('id');
-  const messageContents = $(e.target).closest('.messageContainer').find('.messageContent').html();
+  const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
+  const messageContents = getText(messageContentContainer);
   updateMessageArray(messageId, messageContents);
   util.handleSaveBtn(e);
 };
