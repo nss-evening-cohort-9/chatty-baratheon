@@ -28,9 +28,9 @@ const chatBoxBuilder = () => {
   let domString = [];
   messagesToPrint.forEach((message) => {
     if (message.userId === 'chatBot') {
-      domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column mr-2">`;
+      domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-start mr-2">`;
       // domString += `<p class="messageDate">${message.timeStamp}</p>`;
-      domString += '<div class="d-flex flex-row">';
+      domString += '<div class="d-flex flex-row messageRow">';
       domString += '<div id="messageBtns" class="d-flex flex-row">';
       domString += '<button class="deleteBtn fas fa-times" data-dismiss="alert" type="button" aria-label="Delete Message"></button>';
       domString += '<button class="editBtn fas fa-pencil-alt" type="button" aria-label="Edit Message"></button>';
@@ -42,7 +42,7 @@ const chatBoxBuilder = () => {
     } else {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-end text-right ml-2">`;
       domString += `<p class="messageDate">${message.timeStamp}</p>`;
-      domString += '<div class="d-flex flex-row">';
+      domString += '<div class="d-flex flex-row messageRow">';
       domString += `<p class="messageContent messageBubbleOut msg-cont-right">${message.messageContent}</p>`;
       domString += '<div id="messageBtns" class="d-flex flex-row">';
       domString += '<button class="saveBtn fas fa-save" style="display: none;" aria-label="Save Message"></button>';
