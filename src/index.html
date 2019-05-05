@@ -9,25 +9,25 @@
 </head>
 <body id="content">
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg sticky-top navbar-light py-3">
+  <nav class="navbar navbar-expand-lg sticky-top navbar-light py-1 my-1">
     <div class="d-flex flex-row justify-content-between align-items-center col-12">
       <div class="nav-brand m-0 p-0 d-flex align-items-center flex-row col-3">
-        <img src="./assets/baratheon-logo.svg" id="navImg"> 
+        <img src="./assets/baratheon-logo-light.svg" id="navImg"> 
       </div>
       <input class="form-control col-5 shadow-lg" id="chatInput" type="text" placeholder="Type in here to chat!" aria-label="Chat Input Box">
       <div class="col-3 d-flex justify-content-center align-items-center">
-        <button class="btn btn-dark col-5 shadow-lg" id="clearChat" type="button">Clear Chat</button>
+        <button class="btn btn-light col-7 shadow-lg" id="clearChat" type="button">Clear Chat</button>
       </div>
     </div>
   </nav>
   <!-- Page editing controls -->
-  <div class="sizeControl container d-flex justify-content-center col-12">
-      <input type="checkbox" id="increaseSize" style="font-weight:bold" class="btn btn-dark">TextSizeIncrease</input>
-      <input type="checkbox" id="toggleDark" name="dark_light" title="Toggle dark/light mode">🌛Dark Mode</input>
-    </div>
+  <div class="btn-group-toggle sizeControl container d-flex justify-content-center col-12 py-1 my-1" data-toggle="buttons">
+    <button id="increaseSize" class="btn btn-light mx-1">Large Text</button>
+    <button id="toggleDark" class="btn btn-light mx-1">Dark Mode</button>
+  </div>
   <!-- Chatbox section -->
   <div id="overflowDiv" class="mx-auto shadow-lg">
-    <div id="chatboxContainer" class="mx-auto">
+    <div id="chatboxContainer" class="mx-auto py-1 my-1">
       <div id="chatBox" class="container d-flex flex-column justify-content-end chatbox"></div>
     </div>
   </div>
