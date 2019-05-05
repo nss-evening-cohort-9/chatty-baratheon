@@ -1,13 +1,15 @@
 import $ from 'jquery';
 import chatBox from './chatBox/chatBox';
-
-window.jQuery = $;
-window.$ = $;
+import effects from '../helpers/effects';
 
 const eventListeners = () => {
   $('#chatInput').keyup(chatBox.newMessageEvent);
   $('#clearChat').click(chatBox.clearMessages);
+  $('#chatBox').on('click', '.editBtn', chatBox.editMessage);
+  $('#chatBox').on('click', '.saveBtn', chatBox.saveMessage);
   $('#chatBox').on('click', '.deleteBtn', chatBox.deleteMessage);
+  $('#chatBox').on('mouseenter', '.messageRow', effects.messageMouseenter);
+  $('#chatBox').on('mouseleave', '.messageRow', effects.messageMouseleave);
   $('#toggleDark').click(() => {
     $('#content').toggleClass('darkMode');
   });

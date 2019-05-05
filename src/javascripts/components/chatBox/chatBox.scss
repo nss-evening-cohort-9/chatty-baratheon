@@ -1,13 +1,36 @@
-.chatbox {
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+#overflowDiv {
   width: 50vw;
   height: 85vh;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+#chatboxContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 50vw;
+  height: 85vh;
+  border-radius: 25px;
+  overflow: auto;
+  background-color: white;
+}
+
+.chatbox {
+  width: 50vw;
+  margin: 0px;
   background: white;
   border-radius: 25px;
   font-size: .9rem;
   padding: 1rem .5rem;
 };
 
-.message {
+#chatboxContainer > :first-child {
+  margin-top: auto;
+}
+
+.messageContent {
   margin: 1% 0;
 };
 
@@ -22,9 +45,78 @@
   padding: .3rem .7rem;
 };
 
+.msg-cont-left.editable {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
+};
+
+.msg-cont-right.editable {
+  background-color: rgba(22, 131, 241, 0.5);
+  color: black;
+  box-shadow: inset 0 0 0 2px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
+};
+
 .messageBubbleOut {
   color: white;
-  background-color: #1685F1;
+  background-color: #1685f1;
   border-radius: 20px;
   padding: .2rem .5rem;
 };
+
+.deleteBtn:not(:disabled):not(.disabled):hover,
+.deleteBtn:not(:disabled):not(.disabled):focus,
+.editBtn:not(:disabled):not(.disabled):hover,
+.editBtn:not(:disabled):not(.disabled):focus,
+.saveBtn:not(:disabled):not(.disabled):hover,
+.saveBtn:not(:disabled):not(.disabled):focus {
+  opacity: .75;
+}
+
+#messageBtns {
+  opacity: 0;
+}
+
+.msg-cont-left {
+  position: relative;
+  left: -25px;
+}
+
+.msg-cont-right {
+  position: relative;
+  right: -25px;
+}
+
+button.editBtn,
+button.saveBtn,
+button.deleteBtn {
+  padding: .1rem;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+  justify-content: center;
+  align-items: center;
+}
+
+deleteBtn,
+editBtn,
+saveBtn {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px o #fff;
+}
+
+.editBtn .fa-pencil-alt,
+.deleteBtn .fa-times {
+  color: #000;
+  opacity: .5;
+} 
+
+.editBtn .fa-pencil-alt:hover,
+.deleteBtn .fa-times:hover {
+  color: #000;
+  text-decoration: none;
+  opacity: 1;
+  align-items: center;
+}
