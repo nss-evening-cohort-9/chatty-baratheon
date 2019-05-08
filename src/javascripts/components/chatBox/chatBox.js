@@ -8,7 +8,7 @@ import editData from '../../firebaseEdit';
 import './chatBox.scss';
 
 let messages = [];
-let messageIterator = 6;
+let activeUser = '';
 let currentConversationId = '';
 
 const getLimitedMessageLength = () => {
@@ -67,14 +67,11 @@ const clearMessages = () => {
 
 const messageBuilder = (messageToPrint) => {
   const newMessage = {
-    messageId: `message${messageIterator}`,
-    userId: 'user1',
-    name: 'me',
+    name: activeUser,
     timeStamp: moment().format('MMMM D, YYYY h:mm A'),
     messageContent: String(messageToPrint),
   };
   putData.putData(newMessage, currentConversationId);
-  messageIterator += 1;
 };
 
 const newMessageEvent = (e) => {
@@ -93,6 +90,10 @@ const sendData = (array) => {
 
 const getConversationId = (currentConversation) => {
   currentConversationId = currentConversation;
+};
+
+const getActiveUser = (user) => {
+  activeUser = user;
 };
 
 const editMessage = (e) => {
@@ -141,4 +142,5 @@ export default {
   sendData,
   channelBuilder,
   getConversationId,
+  getActiveUser,
 };

@@ -5,6 +5,10 @@ import chatBox from './components/chatBox/chatBox';
 
 let activeUser;
 
+const sendActiveUser = () => {
+  chatBox.getActiveUser(activeUser);
+};
+
 const gotUser = (data) => {
   const usersArray = [];
   const usersList = data.val();
@@ -17,6 +21,7 @@ const gotUser = (data) => {
     };
     usersArray.push(userObject);
   }
+  sendActiveUser();
   chatBox.channelBuilder(usersArray);
 };
 

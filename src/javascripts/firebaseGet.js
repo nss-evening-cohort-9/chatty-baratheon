@@ -12,14 +12,14 @@ const gotDataMessages = (data) => {
     for (let i = 0; i < keys.length; i += 1) {
       const k = keys[i];
       const messageObject = {
-        messageId: k,
-        user: messageList[k].user,
-        messageContent: messageList[k].messageContent,
         // messageId: k,
-        // userId: messageList[k].userId,
-        // name: messageList[k].name,
-        // timeStamp: messageList[k].timeStamp,
+        // user: messageList[k].user,
         // messageContent: messageList[k].messageContent,
+        messageId: k,
+        userId: messageList[k].userId,
+        name: messageList[k].name,
+        timeStamp: messageList[k].timeStamp,
+        messageContent: messageList[k].messageContent,
       };
       messagesArray.push(messageObject);
     }
