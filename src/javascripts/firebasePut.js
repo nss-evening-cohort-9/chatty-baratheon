@@ -1,9 +1,9 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-const putData = (data) => {
+const putData = (data, conversationId) => {
   const database = firebase.database();
-  const ref = database.ref('messages');
+  const ref = database.ref(`conversations/${conversationId}`);
   ref.push(data);
 };
 

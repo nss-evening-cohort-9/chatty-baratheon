@@ -13,10 +13,13 @@ const gotDataMessages = (data) => {
       const k = keys[i];
       const messageObject = {
         messageId: k,
-        userId: messageList[k].userId,
-        name: messageList[k].name,
-        timeStamp: messageList[k].timeStamp,
+        user: messageList[k].user,
         messageContent: messageList[k].messageContent,
+        // messageId: k,
+        // userId: messageList[k].userId,
+        // name: messageList[k].name,
+        // timeStamp: messageList[k].timeStamp,
+        // messageContent: messageList[k].messageContent,
       };
       messagesArray.push(messageObject);
     }
@@ -28,10 +31,22 @@ const errDataMessages = (err) => {
   console.error(err);
 };
 
-const firebaseGetMessages = () => {
+// const firebaseGetMessages = () => {
+//   const database = firebase.database();
+//   const ref = database.ref('messages');
+//   ref.on('value', gotDataMessages, errDataMessages);
+// };
+
+const firebaseGetMessages = (id) => {
   const database = firebase.database();
-  const ref = database.ref('messages');
+  const ref = database.ref(`conversations/${id}`);
   ref.on('value', gotDataMessages, errDataMessages);
 };
 
-export default { firebaseGetMessages };
+const getMessageId = (e) => {
+  const conversationId = e.target.id;
+  firebaseGetMessages(conversationId);
+  send.getConversationId(conversationId);
+};
+
+export default { firebaseGetMessages, getMessageId };

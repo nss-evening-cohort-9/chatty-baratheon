@@ -9,6 +9,7 @@ import './chatBox.scss';
 
 let messages = [];
 let messageIterator = 6;
+let currentConversationId = '';
 
 const getLimitedMessageLength = () => {
   const messagesToPrint = [...messages];
@@ -72,7 +73,7 @@ const messageBuilder = (messageToPrint) => {
     timeStamp: moment().format('MMMM D, YYYY h:mm A'),
     messageContent: String(messageToPrint),
   };
-  putData.putData(newMessage);
+  putData.putData(newMessage, currentConversationId);
   messageIterator += 1;
 };
 
@@ -88,6 +89,10 @@ const newMessageEvent = (e) => {
 const sendData = (array) => {
   messages = [...array];
   chatBoxBuilder();
+};
+
+const getConversationId = (currentConversation) => {
+  currentConversationId = currentConversation;
 };
 
 const editMessage = (e) => {
@@ -119,9 +124,10 @@ const deleteMessage = (e) => {
 };
 
 const channelBuilder = (channelArray) => {
-  let domString = '<a class="dropdown-item buttons" href="#" id="G100">Group</a>';
+  let domString = '<a class="dropdown-item buttons channelButtons" href="#" id="Bot">ChatBot</a>';
+  domString += '<a class="dropdown-item buttons channelButtons" href="#" id="G100">Group</a>';
   channelArray.forEach((channel) => {
-    domString += `<a class="dropdown-item buttons" href="#" id="${channel.conversationId}">${channel.Recipient}</a>`;
+    domString += `<a class="dropdown-item buttons channelButtons" href="#" id="${channel.conversationId}">${channel.Recipient}</a>`;
   });
   util.printToDom('channelMenu', domString);
 };
@@ -134,4 +140,5 @@ export default {
   deleteMessage,
   sendData,
   channelBuilder,
+  getConversationId,
 };

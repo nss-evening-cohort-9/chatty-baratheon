@@ -8,11 +8,9 @@ let activeUser;
 const gotUser = (data) => {
   const usersArray = [];
   const usersList = data.val();
-  console.error(usersList);
   const keys = Object.keys(usersList);
   for (let i = 0; i < keys.length; i += 1) {
     const k = keys[i];
-    console.error(k);
     const userObject = {
       Recipient: k,
       conversationId: usersList[k].conversationId,
@@ -20,7 +18,6 @@ const gotUser = (data) => {
     usersArray.push(userObject);
   }
   chatBox.channelBuilder(usersArray);
-  console.error(usersArray);
 };
 
 const errUser = (err) => {
