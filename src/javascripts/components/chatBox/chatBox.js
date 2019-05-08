@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import moment from 'moment';
-import messagesData from '../../helpers/data/messagesData';
 import util from '../../helpers/util';
 import putData from '../../firebasePut';
 import removeData from '../../firebaseRemove';
@@ -96,17 +95,6 @@ const editMessage = (e) => {
   util.handleEditBtn(e);
 };
 
-
-// const updateMessageArray = (messageId, messageContents) => {
-//   $.each(messages, (i) => {
-//     if (messageId === messages[i].messageId) {
-//       messages[i].messageContent = messageContents;
-//       messages[i].timeStamp = moment().format('MMMM D, YYYY h:mm A');
-//     }
-//   });
-//   chatBoxBuilder();
-// };
-
 const getText = (element) => {
   const firstTag = element[0].firstChild.nodeName;
   const keyTag = new RegExp(firstTag === '#text' ? '<br' : `</${firstTag}`, 'i');
@@ -124,25 +112,21 @@ const saveMessage = (e) => {
   util.handleSaveBtn(e);
 };
 
-const initializeMessages = () => {
-  messagesData.getMessagesData()
-    .then((resp) => {
-      const messageResults = resp.data.messages;
-      messages = messageResults;
-      chatBoxBuilder();
-    })
-    .catch(err => console.error(err));
-};
-
-
 const deleteMessage = (e) => {
   e.preventDefault();
   const messageId = $(e.target).closest('.messageContainer').attr('id');
   removeData.removeMessage(messageId);
 };
 
+const channelBuilder = (channelArray) => {
+  let domString = '';
+  $.each(channelArray, (channel) => {
+    domString += `<a class="dropdown-item buttons" href="#">${channel}</a>`;
+  });
+  util.printToDom('channelMenu', domString);
+};
+
 export default {
-  initializeMessages,
   newMessageEvent,
   clearMessages,
   editMessage,

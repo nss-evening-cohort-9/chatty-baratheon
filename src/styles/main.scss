@@ -10,3 +10,14 @@ body {
   background-color: black;
   color: white;
 }
+
+.dropdown-menu {
+  background-color: black;
+  .buttons {
+    color: white;
+  }
+}
+
+.dropdown-menu .buttons:hover {
+  background-color: green;
+}
