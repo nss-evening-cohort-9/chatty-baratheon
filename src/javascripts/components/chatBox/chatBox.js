@@ -118,13 +118,13 @@ const deleteMessage = (e) => {
   removeData.removeMessage(messageId);
 };
 
-// const channelBuilder = (channelArray) => {
-//   let domString = '';
-//   $.each(channelArray, (channel) => {
-//     domString += `<a class="dropdown-item buttons" href="#">${channel}</a>`;
-//   });
-//   util.printToDom('channelMenu', domString);
-// };
+const channelBuilder = (channelArray) => {
+  let domString = '<a class="dropdown-item buttons" href="#" id="G100">Group</a>';
+  channelArray.forEach((channel) => {
+    domString += `<a class="dropdown-item buttons" href="#" id="${channel.conversationId}">${channel.Recipient}</a>`;
+  });
+  util.printToDom('channelMenu', domString);
+};
 
 export default {
   newMessageEvent,
@@ -133,4 +133,5 @@ export default {
   saveMessage,
   deleteMessage,
   sendData,
+  channelBuilder,
 };
