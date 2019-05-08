@@ -30,9 +30,9 @@ const chatBoxBuilder = () => {
   const messagesToPrint = getLimitedMessageLength();
   let domString = [];
   messagesToPrint.forEach((message) => {
-    if (message.userId === 'chatBot') {
+    if (message.name !== activeUser) {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-start mr-2">`;
-      // domString += `<p class="messageDate">${message.timeStamp}</p>`;
+      domString += `<p class="messageDate">${message.timeStamp}</p>`;
       domString += '<div class="d-flex flex-row messageRow">';
       domString += '<div id="messageBtns" class="d-flex flex-row">';
       domString += '<button class="deleteBtn fas fa-times" data-dismiss="alert" type="button" aria-label="Delete Message"></button>';
@@ -114,14 +114,14 @@ const saveMessage = (e) => {
   const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageContents = getText(messageContentContainer);
-  editData.editMessage(messageId, messageContents);
+  editData.editMessage(messageId, currentConversationId, messageContents);
   util.handleSaveBtn(e);
 };
 
 const deleteMessage = (e) => {
   e.preventDefault();
   const messageId = $(e.target).closest('.messageContainer').attr('id');
-  removeData.removeMessage(messageId);
+  removeData.removeMessage(messageId, currentConversationId);
 };
 
 const channelBuilder = (channelArray) => {
