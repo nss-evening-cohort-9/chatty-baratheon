@@ -49,4 +49,10 @@ const getMessageId = (e) => {
   send.getConversationId(conversationId);
 };
 
-export default { firebaseGetMessages, getMessageId };
+const getPageLoad = () => {
+  const database = firebase.database();
+  const ref = database.ref('conversations/chatBot');
+  ref.on('value', gotDataMessages, errDataMessages);
+};
+
+export default { firebaseGetMessages, getMessageId, getPageLoad };

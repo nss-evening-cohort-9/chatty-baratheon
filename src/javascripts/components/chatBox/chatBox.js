@@ -33,6 +33,9 @@ const chatBoxBuilder = () => {
     if (message.name !== activeUser) {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-start mr-2">`;
       domString += `<p class="messageDate">${message.timeStamp}</p>`;
+      if (currentConversationId === 'G100') {
+        domString += `<p class="messageDate">${message.name}</p>`;
+      }
       domString += '<div class="d-flex flex-row messageRow">';
       domString += '<div id="messageBtns" class="d-flex flex-row">';
       domString += '<button class="deleteBtn fas fa-times" data-dismiss="alert" type="button" aria-label="Delete Message"></button>';
@@ -125,7 +128,7 @@ const deleteMessage = (e) => {
 };
 
 const channelBuilder = (channelArray) => {
-  let domString = '<a class="dropdown-item buttons channelButtons" href="#" id="Bot">ChatBot</a>';
+  let domString = '<a class="dropdown-item buttons channelButtons" href="#" id="chatBot">ChatBot</a>';
   domString += '<a class="dropdown-item buttons channelButtons" href="#" id="G100">Group</a>';
   channelArray.forEach((channel) => {
     domString += `<a class="dropdown-item buttons channelButtons" href="#" id="${channel.conversationId}">${channel.Recipient}</a>`;
