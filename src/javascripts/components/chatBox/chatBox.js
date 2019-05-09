@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import $ from 'jquery';
 import moment from 'moment';
 import messagesData from '../../helpers/data/messagesData';
@@ -30,13 +29,7 @@ const chatBoxBuilder = () => {
   messagesToPrint.forEach((message) => {
     if (message.userId === 'chatBot') {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-start mr-2">`;
-      // domString += `<p class="messageDate">${message.timeStamp}</p>`;
       domString += '<div class="d-flex flex-row messageRow">';
-      // domString += '<div id="messageBtns" class="d-flex flex-row">';
-      // domString += '<button class="deleteBtn fas fa-times" data-dismiss="alert" type="button" aria-label="Delete Message"></button>';
-      // domString += '<button class="editBtn fas fa-pencil-alt" type="button" aria-label="Edit Message"></button>';
-      // domString += '<button class="saveBtn fas fa-save" style="display: none;" aria-label="Save Message"></button>';
-      // domString += '</div>';
       domString += `<p class="messageContent messageBubbleIn msg-cont-left">${message.messageContent}</p>`;
       domString += '</div>';
       domString += '</div>';
