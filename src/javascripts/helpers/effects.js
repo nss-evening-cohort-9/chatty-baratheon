@@ -2,7 +2,6 @@ import $ from 'jquery';
 
 const messageMouseenter = (e) => {
   e.preventDefault();
-  // const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageBtns = $(e.target).closest('.messageContainer').find('#messageBtns');
   if ((messageContentContainer).hasClass('msg-cont-right')) {
@@ -17,7 +16,6 @@ const messageMouseenter = (e) => {
 
 const messageMouseleave = (e) => {
   e.preventDefault();
-  // const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageBtns = $(e.target).closest('.messageContainer').find('#messageBtns');
   if ((messageContentContainer).hasClass('msg-cont-right')) {
