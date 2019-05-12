@@ -2,17 +2,9 @@ import $ from 'jquery';
 
 const messageMouseenter = (e) => {
   e.preventDefault();
-  // const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageBtns = $(e.target).closest('.messageContainer').find('#messageBtns');
-  if ((messageContentContainer).hasClass('messageContentLeft')) {
-    $(messageContentContainer).animate({
-      left: '+=25px',
-    });
-    $(messageBtns).animate({
-      opacity: '1',
-    });
-  } else if ((messageContentContainer).hasClass('messageContentRight')) {
+  if ((messageContentContainer).hasClass('msg-cont-right')) {
     $(messageContentContainer).animate({
       right: '+=25px',
     });
@@ -24,17 +16,9 @@ const messageMouseenter = (e) => {
 
 const messageMouseleave = (e) => {
   e.preventDefault();
-  // const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageBtns = $(e.target).closest('.messageContainer').find('#messageBtns');
-  if ((messageContentContainer).hasClass('messageContentLeft')) {
-    $(messageContentContainer).animate({
-      left: '-25px',
-    });
-    $(messageBtns).animate({
-      opacity: '0',
-    });
-  } else if ((messageContentContainer).hasClass('messageContentRight')) {
+  if ((messageContentContainer).hasClass('msg-cont-right')) {
     $(messageContentContainer).animate({
       right: '-25px',
     });
