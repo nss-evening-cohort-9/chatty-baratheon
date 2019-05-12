@@ -37,7 +37,7 @@ const chatBoxBuilder = () => {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-end text-right ml-2">`;
       domString += `<p class="messageDate">${message.timeStamp}</p>`;
       domString += '<div class="d-flex flex-row messageRow">';
-      domString += `<p class="messageContent messageBubbleOut msg-cont-right">${message.messageContent}</p>`;
+      domString += `<p class="messageContent messageBubbleOut messageContentRight">${message.messageContent}</p>`;
       domString += '<div id="messageBtns" class="d-flex flex-row">';
       domString += '<button class="saveBtn fas fa-save" style="display: none;" aria-label="Save Message"></button>';
       domString += '<button class="editBtn fas fa-pencil-alt" aria-label="Edit Message"></button>';

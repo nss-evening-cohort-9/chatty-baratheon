@@ -1,10 +1,19 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
-#overflowDiv {
-  width: 50vw;
-  height: 85vh;
-  border-radius: 25px;
-  overflow: hidden;
+.btn {
+  font-family: 'Merriweather', serif;
+  font-weight: 700;
+}
+
+button.editBtn,
+button.saveBtn,
+button.deleteBtn {
+  padding: .1rem;
+  background-color: transparent;
+  border: 0;
+  appearance: none;
+  justify-content: center;
+  align-items: center;
 }
 
 #chatboxContainer {
@@ -20,48 +29,69 @@
 .chatbox {
   width: 50vw;
   margin: 0px;
-  background: white;
   border-radius: 25px;
   font-size: .9rem;
   padding: 1rem .5rem;
-};
+}
 
 #chatboxContainer > :first-child {
   margin-top: auto;
 }
 
-.messageContent {
-  margin: 1% 0;
-};
+#chatInput {
+  border-radius: 5px;
+}
 
-.messageDate {
-  font-size: .7rem;
-  margin: 1% 3% 0 3%;
-};
+.darkMode {
+  .btn-dark:hover {
+    background-color: hsla(206, 11%, 13%, 0.5);
+  }
 
-.messageBubbleIn {
-  background-color: #E7E6EB;
-  border-radius: 20px;
-  padding: .3rem .7rem;
-};
+  .btn-dark:not(:disabled):not(.disabled):active, .btn-dark:not(:disabled):not(.disabled).active, .show > .btn-dark.dropdown-toggle {
+    color: #fff;
+    background-color: hsla(206, 11%, 13%, 0.5);
+    border-color: #171a1d;
+}
 
-.msg-cont-left.editable {
-  background-color: transparent;
-  box-shadow: inset 0 0 0 2px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
-};
+  button.editBtn,
+  button.saveBtn,
+  button.deleteBtn {
+    color: white;
+  }
 
-.msg-cont-right.editable {
-  background-color: rgba(22, 131, 241, 0.5);
-  color: black;
-  box-shadow: inset 0 0 0 2px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
-};
+  #chatboxContainer {
+    background-color: black;
+  }
 
-.messageBubbleOut {
-  color: white;
-  background-color: #1685f1;
-  border-radius: 20px;
-  padding: .2rem .5rem;
-};
+  #chatInput {
+    background-color: black;
+    color: white;
+    border: none;
+    caret-color: white;
+  }
+
+  #chatInput::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .deleteBtn .fa-times:hover,
+  .editBtn .fa-pencil-alt:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 1;
+    align-items: center;
+  }
+  
+  .messageBubbleIn {
+    background-color: rgba(231, 230, 235, 0.5);
+  }
+
+  .messageContentRight.editable {
+    background-color: rgba(22, 131, 241, 0.76);
+    color: white;
+    box-shadow: inset 0 0 0 2px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
+  }
+}
 
 .deleteBtn:not(:disabled):not(.disabled):hover,
 .deleteBtn:not(:disabled):not(.disabled):focus,
@@ -70,6 +100,33 @@
 .saveBtn:not(:disabled):not(.disabled):hover,
 .saveBtn:not(:disabled):not(.disabled):focus {
   opacity: .75;
+}
+
+.deleteBtn .fa-times, 
+.editBtn .fa-pencil-alt {
+  color: #000;
+  opacity: .5;
+} 
+
+.deleteBtn .fa-times:hover,
+.editBtn .fa-pencil-alt:hover {
+  color: #000;
+  text-decoration: none;
+  opacity: 1;
+  align-items: center;
+}
+
+.messageBubbleIn {
+  background-color: #E7E6EB;
+  border-radius: 20px;
+  padding: .3rem .7rem;
+}
+
+.messageBubbleOut {
+  color: white;
+  background-color: #1685f1;
+  border-radius: 20px;
+  padding: .2rem .5rem;
 }
 
 #messageBtns {
@@ -81,37 +138,29 @@
   right: -25px;
 }
 
-button.editBtn,
-button.saveBtn,
-button.deleteBtn {
-  padding: .1rem;
+.messageContentLeft.editable {
   background-color: transparent;
-  border: 0;
-  appearance: none;
-  justify-content: center;
-  align-items: center;
+  box-shadow: inset 0 0 0 2px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
 }
 
-deleteBtn,
-editBtn,
-saveBtn {
-  float: right;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1;
-  text-shadow: 0 1px o #fff;
+.messageContentRight.editable {
+  background-color: rgba(22, 131, 241, 0.5);
+  color: black;
+  box-shadow: inset 0 0 0 2px #e1e1e1, 0 0 1px rgba(0, 0, 0, 0);
 }
 
-.editBtn .fa-pencil-alt,
-.deleteBtn .fa-times {
-  color: #000;
-  opacity: .5;
-} 
+.messageDate {
+  font-size: .7rem;
+  margin: 1% 3% 0 3%;
+}
 
-.editBtn .fa-pencil-alt:hover,
-.deleteBtn .fa-times:hover {
-  color: #000;
-  text-decoration: none;
-  opacity: 1;
-  align-items: center;
+.largeText {
+  font-size: 1.2rem;
+}
+
+#overflowDiv {
+  width: 50vw;
+  height: 85vh;
+  border-radius: 25px;
+  overflow: hidden;
 }

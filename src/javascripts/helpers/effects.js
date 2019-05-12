@@ -28,4 +28,13 @@ const messageMouseleave = (e) => {
   }
 };
 
-export default { messageMouseenter, messageMouseleave };
+const toggleLogo = () => {
+  const currentImg = $('#navImg').attr('src');
+  if (currentImg === 'dae0b572ec59a3e7a8b39cbcc2640a0c.svg') {
+    $('#navImg').attr('src', '2b4989c61b969399fd8aab9e8e1fda85.svg');
+  } else {
+    $('#navImg').attr('src', 'dae0b572ec59a3e7a8b39cbcc2640a0c.svg');
+  }
+};
+
+export default { messageMouseenter, messageMouseleave, toggleLogo };
