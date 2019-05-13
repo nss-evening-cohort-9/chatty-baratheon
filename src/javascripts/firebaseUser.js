@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import $ from 'jquery';
 import chatBox from './components/chatBox/chatBox';
+import getThread from './firebaseGet';
 
 let activeUser;
 
@@ -23,6 +24,14 @@ const gotUser = (data) => {
   }
   sendActiveUser();
   chatBox.channelBuilder(usersArray);
+  let botThread = '';
+  usersArray.forEach((thread) => {
+    if (thread.Recipient === 'chatBot') {
+      botThread = thread.conversationId;
+    }
+  });
+  getThread.getPageLoadThread(botThread);
+  chatBox.getConversationId(botThread);
 };
 
 const errUser = (err) => {

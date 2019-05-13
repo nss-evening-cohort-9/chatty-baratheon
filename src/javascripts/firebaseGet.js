@@ -43,16 +43,21 @@ const firebaseGetMessages = (id) => {
   ref.on('value', gotDataMessages, errDataMessages);
 };
 
+const getPageLoadThread = (id) => {
+  const thread = id;
+  firebaseGetMessages(thread);
+};
+
 const getMessageId = (e) => {
   const conversationId = e.target.id;
   firebaseGetMessages(conversationId);
   send.getConversationId(conversationId);
 };
 
-const getPageLoad = () => {
-  const database = firebase.database();
-  const ref = database.ref('conversations/chatBot');
-  ref.on('value', gotDataMessages, errDataMessages);
-};
+// const getPageLoad = () => {
+//   const database = firebase.database();
+//   const ref = database.ref('conversations/chatBot');
+//   ref.on('value', gotDataMessages, errDataMessages);
+// };
 
-export default { firebaseGetMessages, getMessageId, getPageLoad };
+export default { firebaseGetMessages, getMessageId, getPageLoadThread };

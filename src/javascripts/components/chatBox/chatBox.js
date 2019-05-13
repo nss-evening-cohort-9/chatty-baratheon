@@ -123,8 +123,7 @@ const deleteMessage = (e) => {
 };
 
 const channelBuilder = (channelArray) => {
-  let domString = '<a class="dropdown-item buttons channelButtons" href="#" id="chatBot">ChatBot</a>';
-  domString += '<a class="dropdown-item buttons channelButtons" href="#" id="G100">Group</a>';
+  let domString = '<a class="dropdown-item buttons channelButtons" href="#" id="G100">Group</a>';
   channelArray.forEach((channel) => {
     domString += `<a class="dropdown-item buttons channelButtons" href="#" id="${channel.conversationId}">${channel.Recipient}</a>`;
   });
