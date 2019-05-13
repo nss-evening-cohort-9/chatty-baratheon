@@ -50,8 +50,8 @@ const getPageLoadThread = (id) => {
 
 const getMessageId = (e) => {
   const conversationId = e.target.id;
-  firebaseGetMessages(conversationId);
   send.getConversationId(conversationId);
+  firebaseGetMessages(conversationId);
 };
 
 // const getPageLoad = () => {
