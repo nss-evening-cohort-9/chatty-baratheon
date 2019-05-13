@@ -30,7 +30,7 @@ const chatBoxBuilder = () => {
     if (message.userId === 'chatBot') {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-start mr-2">`;
       domString += '<div class="d-flex flex-row messageRow">';
-      domString += `<p class="messageContent messageBubbleIn msg-cont-left">${message.messageContent}</p>`;
+      domString += `<p class="messageContent messageBubbleIn">${message.messageContent}</p>`;
       domString += '</div>';
       domString += '</div>';
     } else {

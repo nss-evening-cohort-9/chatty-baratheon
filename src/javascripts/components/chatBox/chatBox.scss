@@ -133,7 +133,11 @@ button.deleteBtn {
   opacity: 0;
 }
 
-.msg-cont-right {
+.messageContent {
+  margin: 1% 0;
+}
+
+.messageContentRight {
   position: relative;
   right: -25px;
 }
