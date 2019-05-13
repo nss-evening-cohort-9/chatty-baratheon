@@ -15,7 +15,27 @@ body {
   color: white;
 }
 
+.dropdown-menu {
+  background-color: black;
+  .buttons {
+    color: white;
+  }
+}
+
+.dropdown-menu .buttons:hover {
+  background-color: goldenrod;
+}
+
 #navImg {
   width: 100%;
   height: auto;
 }
+
+.userButton {
+  background-color: goldenrod;
+}
+
+.userButton:hover {
+  background-color: black;
+}
+

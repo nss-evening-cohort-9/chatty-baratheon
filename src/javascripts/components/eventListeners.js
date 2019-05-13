@@ -1,8 +1,12 @@
 import $ from 'jquery';
 import chatBox from './chatBox/chatBox';
 import effects from '../helpers/effects';
+import activeUser from '../firebaseUser';
+import getMessages from '../firebaseGet';
 
 const eventListeners = () => {
+  $('body').on('click', '.userButton', activeUser.getActiveUser);
+  $('body').on('click', '.channelButtons', getMessages.getMessageId);
   $('#chatInput').keyup(chatBox.newMessageEvent);
   $('#clearChat').click(chatBox.clearMessages);
   $('#chatBox').on('click', '.editBtn', chatBox.editMessage);

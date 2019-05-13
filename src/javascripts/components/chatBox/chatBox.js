@@ -1,12 +1,15 @@
 import $ from 'jquery';
 import moment from 'moment';
-import messagesData from '../../helpers/data/messagesData';
 import util from '../../helpers/util';
+import putData from '../../firebasePut';
+import removeData from '../../firebaseRemove';
+import editData from '../../firebaseEdit';
 
 import './chatBox.scss';
 
 let messages = [];
-let messageIterator = 6;
+let activeUser = '';
+let currentConversationId = '';
 
 const getLimitedMessageLength = () => {
   const messagesToPrint = [...messages];
@@ -27,8 +30,12 @@ const chatBoxBuilder = () => {
   const messagesToPrint = getLimitedMessageLength();
   let domString = [];
   messagesToPrint.forEach((message) => {
-    if (message.userId === 'chatBot') {
+    if (message.name !== activeUser) {
       domString += `<div id="${message.messageId}" class="messageContainer d-flex flex-column align-items-start mr-2">`;
+      domString += `<p class="messageDate">${message.timeStamp}</p>`;
+      if (currentConversationId === 'G100') {
+        domString += `<p class="messageDate">${message.name}</p>`;
+      }
       domString += '<div class="d-flex flex-row messageRow">';
       domString += `<p class="messageContent messageBubbleIn">${message.messageContent}</p>`;
       domString += '</div>';
@@ -58,15 +65,11 @@ const clearMessages = () => {
 
 const messageBuilder = (messageToPrint) => {
   const newMessage = {
-    messageId: `message${messageIterator}`,
-    userId: 'user1',
-    name: 'me',
+    name: activeUser,
     timeStamp: moment().format('MMMM D, YYYY h:mm A'),
     messageContent: String(messageToPrint),
   };
-  messages.push(newMessage);
-  messageIterator += 1;
-  chatBoxBuilder();
+  putData.putData(newMessage, currentConversationId);
 };
 
 const newMessageEvent = (e) => {
@@ -78,20 +81,22 @@ const newMessageEvent = (e) => {
   }
 };
 
+const sendData = (array) => {
+  messages = [...array];
+  chatBoxBuilder();
+};
+
+const getConversationId = (currentConversation) => {
+  currentConversationId = currentConversation;
+};
+
+const getActiveUser = (user) => {
+  activeUser = user;
+};
+
 const editMessage = (e) => {
   e.preventDefault();
   util.handleEditBtn(e);
-};
-
-
-const updateMessageArray = (messageId, messageContents) => {
-  $.each(messages, (i) => {
-    if (messageId === messages[i].messageId) {
-      messages[i].messageContent = messageContents;
-      messages[i].timeStamp = moment().format('MMMM D, YYYY h:mm A');
-    }
-  });
-  chatBoxBuilder();
 };
 
 const getText = (element) => {
@@ -107,31 +112,32 @@ const saveMessage = (e) => {
   const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageContents = getText(messageContentContainer);
-  updateMessageArray(messageId, messageContents);
+  editData.editMessage(messageId, currentConversationId, messageContents);
   util.handleSaveBtn(e);
-};
-
-const initializeMessages = () => {
-  messagesData.getMessagesData()
-    .then((resp) => {
-      const messageResults = resp.data.messages;
-      messages = messageResults;
-      chatBoxBuilder();
-    })
-    .catch(err => console.error(err));
 };
 
 const deleteMessage = (e) => {
   e.preventDefault();
   const messageId = $(e.target).closest('.messageContainer').attr('id');
-  messages.forEach((message, index) => {
-    if (message.messageId === messageId) {
-      messages.splice(index, 1);
-    }
+  removeData.removeMessage(messageId, currentConversationId);
+};
+
+const channelBuilder = (channelArray) => {
+  let domString = '<a class="dropdown-item buttons channelButtons" href="#" id="G100">Group</a>';
+  channelArray.forEach((channel) => {
+    domString += `<a class="dropdown-item buttons channelButtons" href="#" id="${channel.conversationId}">${channel.Recipient}</a>`;
   });
-  chatBoxBuilder();
+  util.printToDom('channelMenu', domString);
 };
 
 export default {
-  initializeMessages, newMessageEvent, clearMessages, editMessage, saveMessage, deleteMessage,
+  newMessageEvent,
+  clearMessages,
+  editMessage,
+  saveMessage,
+  deleteMessage,
+  sendData,
+  channelBuilder,
+  getConversationId,
+  getActiveUser,
 };

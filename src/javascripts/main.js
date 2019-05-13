@@ -1,12 +1,17 @@
 import '../styles/main.scss';
 import 'bootstrap';
 
-import chatBox from './components/chatBox/chatBox';
 import eventListeners from './components/eventListeners';
+import initialize from './firebaseInitialize';
+import getData from './firebaseGet';
+import user from './firebaseUser';
 
 
 const init = () => {
-  chatBox.initializeMessages();
+  initialize.firebaseInitialize();
+  getData.firebaseGetMessages();
+  // getData.getPageLoad();
+  user.showModal();
   eventListeners.eventListeners();
 };
 
