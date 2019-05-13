@@ -14,20 +14,15 @@ const eventListeners = () => {
   $('#chatBox').on('click', '.deleteBtn', chatBox.deleteMessage);
   $('#chatBox').on('mouseenter', '.messageRow', effects.messageMouseenter);
   $('#chatBox').on('mouseleave', '.messageRow', effects.messageMouseleave);
-  $('#toggleDark').click(() => {
-    $('#content').toggleClass('darkMode');
+  $('#increaseSize').click(() => {
+    $('#chatBox').toggleClass('largeText');
   });
-  $('#increaseSize').click(function increaseSize() {
-    let size = parseInt($('#chatBox').css('font-size'), 10);
-    if ($(this).is(':checked')) {
-      size += 4;
-    } else {
-      size -= 4;
-      if (size <= 10) {
-        size = 10;
-      }
-    }
-    $('#chatBox').css('font-size', size);
+  $('#toggleDark').click(() => {
+    $('body').toggleClass('darkMode');
+    $('#clearChat').toggleClass('btn-dark').toggleClass('btn-light');
+    $('#increaseSize').toggleClass('btn-dark').toggleClass('btn-light');
+    $('#toggleDark').toggleClass('btn-dark').toggleClass('btn-light');
+    effects.toggleLogo();
   });
 };
 

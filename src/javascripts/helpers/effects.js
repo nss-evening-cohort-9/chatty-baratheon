@@ -2,17 +2,9 @@ import $ from 'jquery';
 
 const messageMouseenter = (e) => {
   e.preventDefault();
-  // const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageBtns = $(e.target).closest('.messageContainer').find('#messageBtns');
-  if ((messageContentContainer).hasClass('msg-cont-left')) {
-    $(messageContentContainer).animate({
-      left: '+=25px',
-    });
-    $(messageBtns).animate({
-      opacity: '1',
-    });
-  } else if ((messageContentContainer).hasClass('msg-cont-right')) {
+  if ((messageContentContainer).hasClass('messageContentRight')) {
     $(messageContentContainer).animate({
       right: '+=25px',
     });
@@ -24,17 +16,9 @@ const messageMouseenter = (e) => {
 
 const messageMouseleave = (e) => {
   e.preventDefault();
-  // const messageId = $(e.target).closest('.messageContainer').attr('id');
   const messageContentContainer = $(e.target).closest('.messageContainer').find('.messageContent');
   const messageBtns = $(e.target).closest('.messageContainer').find('#messageBtns');
-  if ((messageContentContainer).hasClass('msg-cont-left')) {
-    $(messageContentContainer).animate({
-      left: '-25px',
-    });
-    $(messageBtns).animate({
-      opacity: '0',
-    });
-  } else if ((messageContentContainer).hasClass('msg-cont-right')) {
+  if ((messageContentContainer).hasClass('messageContentRight')) {
     $(messageContentContainer).animate({
       right: '-25px',
     });
@@ -44,4 +28,13 @@ const messageMouseleave = (e) => {
   }
 };
 
-export default { messageMouseenter, messageMouseleave };
+const toggleLogo = () => {
+  const currentImg = $('#navImg').attr('src');
+  if (currentImg === '/src/assets/baratheon-logo-light.svg') {
+    $('#navImg').attr('src', '/src/assets/baratheon-logo.svg');
+  } else {
+    $('#navImg').attr('src', '/src/assets/baratheon-logo-light.svg');
+  }
+};
+
+export default { messageMouseenter, messageMouseleave, toggleLogo };
