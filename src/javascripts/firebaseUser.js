@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import $ from 'jquery';
 import chatBox from './components/chatBox/chatBox';
+import pageLoad from './firebaseGet';
 
 let activeUser;
 
@@ -23,6 +24,7 @@ const gotUser = (data) => {
   }
   sendActiveUser();
   chatBox.channelBuilder(usersArray);
+  pageLoad.getPageLoad();
 };
 
 const errUser = (err) => {
@@ -35,6 +37,7 @@ const firebaseGetUser = (user) => {
   ref.on('value', gotUser, errUser);
 };
 
+
 const getActiveUser = (e) => {
   activeUser = e.target.textContent;
   firebaseGetUser(activeUser);
@@ -43,5 +46,6 @@ const getActiveUser = (e) => {
 const showModal = () => {
   $('.modal').modal('show');
 };
+
 
 export default { showModal, getActiveUser };

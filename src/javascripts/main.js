@@ -10,7 +10,7 @@ import user from './firebaseUser';
 const init = () => {
   initialize.firebaseInitialize();
   getData.firebaseGetMessages();
-  getData.getPageLoad();
+  // getData.getPageLoad();
   user.showModal();
   eventListeners.eventListeners();
 };
